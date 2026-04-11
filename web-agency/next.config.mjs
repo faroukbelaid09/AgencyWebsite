@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  output: 'export',
+  basePath: '/AgencyWebsite', // Remove if using a custom domain at root
+  images: {
+    unoptimized: true,
+  },
 };
-
-export default nextConfig;
+module.exports = nextConfig;

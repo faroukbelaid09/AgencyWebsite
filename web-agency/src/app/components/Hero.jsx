@@ -2,6 +2,7 @@
 
 import styles from "./Hero.module.css";
 import { motion } from "framer-motion";
+import basePath from "../utils/basePath";
 
 export default function Hero() {
   return (
@@ -66,7 +67,8 @@ export default function Hero() {
             ease: [0.22, 1, 0.36, 1]
           }}
         >
-          <img src="/hero.jpg" alt="work" />
+          <img src={`${basePath}/hero.jpg`} alt="work" />
+          
         </motion.div>
 
         {/* Subtitle */}

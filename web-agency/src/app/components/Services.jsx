@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import styles from "./Services.module.css";
+import basePath from "../utils/basePath";
 
 export default function Services() {
   return (
@@ -51,17 +52,17 @@ export default function Services() {
             {
               title: "Web Development",
               desc: "Fast, modern, and scalable websites.",
-              icon: "/web-dev.png"
+              icon: `${basePath}/web-dev.png`,
             },
             {
               title: "App Development",
               desc: "Custom apps built for performance.",
-              icon: "/app-dev.png"
+              icon: `${basePath}/app-dev.png`,
             },
             {
               title: "Branding",
               desc: "Logos and identity that stand out.",
-              icon: "/design.png"
+              icon: `${basePath}/design.png`,
             }
           ].map((service, i) => (
             <motion.div

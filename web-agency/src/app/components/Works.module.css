@@ -12,7 +12,7 @@
   flex-direction: column;
   align-items: center;
   max-width: 900px;
-  margin: 40px;
+  margin: 40px auto;
 }
 
 .title {
@@ -24,7 +24,6 @@
 .subtitle {
   color: #faf8f780;
   margin-top: 1.5rem;
-  font-weight: 400;
   font-size: 1.3rem;
   line-height: 1.5;
   letter-spacing: -0.02em;
@@ -34,12 +33,14 @@
 /* GRID */
 .service_bottom_side {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 30px;
-  margin: 2rem;
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 1200px;
 }
 
-/* CARD BASE */
+/* CARD */
 .card {
   will-change: transform;
   background-color: #191919;
@@ -47,14 +48,14 @@
   padding: 40px;
   width: 100%;
   -webkit-tap-highlight-color: transparent;
-
+  cursor: pointer;
   transition:
     background-color 0.4s ease,
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.4s ease;
 }
 
-/* TEXT BASE */
+/* TEXT */
 .card_title {
   font-size: 2rem;
   font-weight: bold;
@@ -72,6 +73,7 @@
   display: flex;
   gap: 12px;
   padding-top: 8px;
+  flex-wrap: wrap;
 }
 
 .card_tag {
@@ -80,7 +82,6 @@
   background-color: #343434;
   color: #faf8f7;
   font-size: 1rem;
-  font-weight: 500;
   transition: all 0.25s ease;
 }
 
@@ -90,24 +91,17 @@
   border-radius: 9999px;
   background: #faf8f7;
   color: black;
-  font-weight: 500;
   border: none;
   cursor: pointer;
   transition: all 0.25s ease;
 }
 
-/* ========================= */
-/* DESKTOP HOVER ONLY        */
-/* ========================= */
+/* HOVER (desktop only) */
 @media (hover: hover) and (pointer: fine) {
-
   .card:hover {
-    cursor: pointer;
     background-color: #faf8f7;
     transform: scale(1.03) translateY(-6px);
-    box-shadow:
-      0 20px 40px rgba(0, 0, 0, 0.15),
-      0 0 0 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   }
 
   .card:hover .card_title {
@@ -129,15 +123,12 @@
   }
 }
 
-/* ========================= */
-/* MOBILE                     */
-/* ========================= */
+/* MOBILE */
 @media (max-width: 1024px) {
-
   .service_bottom_side {
     grid-template-columns: 1fr;
     gap: 20px;
-    margin: 1.5rem 0;
+    margin: 1.5rem auto;
   }
 
   .card {
@@ -155,16 +146,15 @@
   }
 
   .card_tag {
-    padding: 4px 12px;
+    padding: 6px 12px;
   }
 }
 
+/* ACTIVE STATE */
 .card.active {
   background-color: #faf8f7;
   transform: scale(1.03) translateY(-6px);
-  box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.15),
-    0 0 0 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 .card.active .card_title {

@@ -4,8 +4,11 @@ import worksData from "../data/workData";
 import WorkCard from "./WorkCard";
 import styles from "./Works.module.css";
 import { motion } from "framer-motion";
+import { useState } from 'react';
 
 export default function Works() {
+  const [activeCard, setActiveCard] = useState(null);
+
   return (
     <div className={styles.container}>
       <div className={styles.service_top_side}>
@@ -66,9 +69,17 @@ export default function Works() {
 
       <div className={styles.service_bottom_side}>
         {worksData.map((work) => (
-          <WorkCard key={work.id} work={work} />
+          <WorkCard
+            key={work.id}
+            work={work}
+            active={activeCard === work.id}
+            onClick={() =>
+              setActiveCard(activeCard === work.id ? null : work.id)
+            }
+          />
         ))}
       </div>
+
 
     </div>
   );

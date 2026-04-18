@@ -1,12 +1,14 @@
-"use client";
-
 import { motion } from "framer-motion";
 import styles from "./Works.module.css";
 
-export default function WorkCard({ work }) {
+export default function WorkCard({ work, active, onClick }) {
   return (
-    <div className={styles.card}>
+    <div
+      className={`${styles.card} ${active ? styles.active : ""}`}
+      onClick={onClick}
+    >
       <div className={styles.left}>
+        
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -16,7 +18,9 @@ export default function WorkCard({ work }) {
           {work.title}
         </motion.h1>
 
-        <p className={styles.card_description}>{work.description}</p>
+        <p className={styles.card_description}>
+          {work.description}
+        </p>
 
         <div className={styles.card_tags}>
           {work.tags.map((tag, i) => (
@@ -26,8 +30,10 @@ export default function WorkCard({ work }) {
           ))}
         </div>
 
-        <button className={styles.card_button}>View Project</button>
-        
+        <button className={styles.card_button}>
+          View Project
+        </button>
+
       </div>
     </div>
   );

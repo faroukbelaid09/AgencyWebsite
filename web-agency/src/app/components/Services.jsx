@@ -1,96 +1,75 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Code, Smartphone, Palette } from "lucide-react";
 import styles from "./Services.module.css";
-import basePath from "../utils/basePath";
 
 export default function Services() {
+  const services = [
+    {
+      title: "Web Development",
+      description: "Fast, modern, and scalable websites.",
+      icon: Code,
+    },
+    {
+      title: "App Development",
+      description: "Custom apps built for performance.",
+      icon: Smartphone,
+    },
+    {
+      title: "Branding",
+      description: "Clear, distinctive brand identities.",
+      icon: Palette,
+    },
+  ];
+
   return (
-    <section className={styles.services}>
+    <section className={styles.section}>
 
-      <motion.div
-        className={styles.content}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        variants={{
-          hidden: {},
-          show: {
-            transition: {
-              staggerChildren: 0.15
-            }
-          }
-        }}
-      >
+      <div className={styles.container}>
 
-        {/* Title */}
-        <motion.h2
-          className={styles.title}
-          variants={{
-            hidden: { opacity: 0, y: 40 },
-            show: { opacity: 1, y: 0 }
-          }}
-        >
-          We create digital products
-        </motion.h2>
+        {/* LEFT */}
+        <motion.div>
+          <div className={styles.left}>
+            <motion.h1 className={styles.title}>
+              We create digital products
+            </motion.h1>
 
-        {/* Subtitle */}
-        <motion.p
-          className={styles.subtitle}
-          variants={{
-            hidden: { opacity: 0 },
-            show: { opacity: 1 }
-          }}
-        >
-          Websites, apps, and brand identities that help businesses grow.
-        </motion.p>
+            <motion.p className={styles.description}>
+              We design and build refined digital experiences that combine clarity, performance, and timeless aesthetics.
+            </motion.p>
 
-        {/* Cards */}
-        <div className={styles.grid}>
-
-          {[
-            {
-              title: "Web Development",
-              desc: "Fast, modern, and scalable websites.",
-              icon: `${basePath}/web-dev.png`,
-            },
-            {
-              title: "App Development",
-              desc: "Custom apps built for performance.",
-              icon: `${basePath}/app-dev.png`,
-            },
-            {
-              title: "Branding",
-              desc: "Logos and identity that stand out.",
-              icon: `${basePath}/design.png`,
-            }
-          ].map((service, i) => (
-            <motion.div
-              key={i}
-              className={styles.card}
-              variants={{
-                hidden: { opacity: 0, y: 40 },
-                show: { opacity: 1, y: 0 }
-              }}
-              whileHover={{ y: -8 }}
-              transition={{
-                type: "spring",
-                stiffness: 200,
-                damping: 15
-              }}
-            >
-              {/* Icon */}
-              <div className={styles.iconWrapper}>
-                <img src={service.icon} alt={service.title} />
-              </div>
-              <h3>{service.title}</h3>
-              <p>{service.desc}</p>
+            <motion.div >
+              <button className={styles.button}>
+                Get in touch →
+              </button>
             </motion.div>
-          ))}
+          </div>
+        </motion.div>
 
+        {/* RIGHT */}
+        <div className={styles.cards}>
+          {services.map((service, index) => {
+            const Icon = service.icon;
+
+            return (
+              <motion.div
+                key={index}
+                className={styles.card}
+              >
+                <div className={styles.iconWrap}>
+                  <Icon className={styles.icon} />
+                </div>
+
+                <div>
+                  <h3 className={styles.cardTitle}>{service.title}</h3>
+                  <p className={styles.cardDesc}>{service.description}</p>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
-
-      </motion.div>
+      </div>
 
     </section>
   );

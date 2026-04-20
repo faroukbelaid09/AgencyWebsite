@@ -140,3 +140,11 @@
     align-items: center;
   }
 }
+
+  .card:active .cardTitle {
+    color: #faf8f7;
+  }
+
+  .card:active .cardDesc {
+    color: #a1a1aa;
+  }

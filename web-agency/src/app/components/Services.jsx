@@ -32,7 +32,7 @@ export default function Services() {
         <motion.div>
           <div className={styles.left}>
             <motion.h1 className={styles.title}>
-              We create digital products
+              We create digital <span className={styles.SubTitle}>Products</span>
             </motion.h1>
 
             <motion.p className={styles.description}>
